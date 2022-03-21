@@ -62,10 +62,12 @@ static PyObject * moduleinit(void){
     // Initialize Info Type
     OSQP_info_Type.tp_new = PyType_GenericNew;
     if (PyType_Ready(&OSQP_info_Type) < 0) return NULL;
+    if (PyModule_AddObject(m, "OSQP_info", (PyObject *)&OSQP_info_Type) < 0) return NULL;
 
     // Initialize Results Type
     OSQP_results_Type.tp_new = PyType_GenericNew;
     if (PyType_Ready(&OSQP_results_Type) < 0) return NULL;
+    if (PyModule_AddObject(m, "OSQP_results", (PyObject *)&OSQP_results_Type) < 0) return NULL;
 
     return m;
 }
